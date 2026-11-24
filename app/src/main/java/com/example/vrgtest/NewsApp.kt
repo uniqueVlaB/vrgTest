@@ -11,9 +11,17 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.vrgtest.data.models.NewsItem
+import com.example.vrgtest.data.models.NewsSource
 import com.example.vrgtest.ui.navigation.NewsNavHost
+import com.example.vrgtest.ui.screens.shared.NewsList
+import com.example.vrgtest.ui.theme.VrgTestTheme
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 @Composable
 fun NewsApp(navController: NavHostController = rememberNavController()) {
@@ -44,4 +52,12 @@ fun NewsTopAppBar(
             }
         }
     )
+}
+
+@Preview
+@Composable
+fun NewsAppPreview(){
+    VrgTestTheme() {
+       NewsApp()
+    }
 }

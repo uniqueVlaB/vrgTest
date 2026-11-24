@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">vrgTest</string>
+    <string name="app_name">News</string>
     <string name="back_button">Back</string>
     <string name="category_title">Category</string>
     <string name="news_details_title">News Details</string>
