@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            VrgTestTheme {
+            VrgTestTheme(dynamicColor = false) {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     NewsApp()
                 }
