@@ -63,14 +63,14 @@ object CategoryDestination : NavigationDestination {
 @Composable
 fun CategoryScreen(
     modifier: Modifier = Modifier,
+    onNewsClick: (NewsItem) -> Unit = {},
     bottomBar: @Composable () -> Unit = {}
 ) {
     Scaffold(
         modifier = modifier,
         topBar = {
             NewsTopAppBar(
-                title = stringResource(CategoryDestination.titleRes),
-                canNavigateBack = false
+                title = stringResource(CategoryDestination.titleRes)
             )
         },
         bottomBar = bottomBar
@@ -92,7 +92,8 @@ fun CategoryScreen(
             CategorySelector()
             Spacer(Modifier.height(8.dp))
             NewsList(
-                newsList = listOf(newsItem, newsItem, newsItem, newsItem)
+                newsList = listOf(newsItem, newsItem, newsItem, newsItem),
+                onItemClick = onNewsClick
             )
         }
     }

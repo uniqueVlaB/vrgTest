@@ -47,20 +47,32 @@ import kotlinx.datetime.format.DateTimeFormat
 import kotlinx.datetime.toLocalDateTime
 
 @Composable
-fun NewsList(newsList: List<NewsItem>, modifier: Modifier = Modifier) {
+fun NewsList(
+    newsList: List<NewsItem>,
+    onItemClick: (NewsItem) -> Unit,
+    modifier: Modifier = Modifier) {
     LazyColumn(
         modifier
             .padding(horizontal = 8.dp)
     ){
         items(newsList){ newsItem ->
-            NewsCard(newsItem, Modifier.padding(top = 8.dp))
+            NewsCard(
+                newsItem,
+                onClick = {onItemClick(newsItem)},
+                Modifier.padding(top = 8.dp))
         }
     }
 }
 
 @Composable
-fun NewsCard(newsItem: NewsItem, modifier: Modifier = Modifier) {
-    Card(modifier) {
+fun NewsCard(
+    newsItem: NewsItem,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier) {
+    Card(
+        onClick = onClick,
+        modifier
+    ) {
         Column() {
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(context = LocalContext.current)
@@ -149,7 +161,10 @@ fun NewsListPreview() {
             publishedAt = Instant.parse("2026-11-24T06:02:04Z").toLocalDateTime(TimeZone.currentSystemDefault()),
             content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         )
-        NewsList(listOf(newsItem, newsItem, newsItem, newsItem,))
+        NewsList(
+            listOf(newsItem, newsItem, newsItem, newsItem,),
+            onItemClick = {}
+        )
     }
 }
 

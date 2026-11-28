@@ -67,7 +67,7 @@ fun HomeScreen(
             author = "Christopher Lamb",
             title = "Pope Francis battled visions of the devil during a two-year spiritual crisis, diaries reveal - CNN",
             description = "Pope Francis suffered a spiritual crisis during his papacy in which he saw visions of the devil and hell while struggling with how to exercise power, newly published diaries of the late pontiff reveal.",
-            url = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ex commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            url = "https://www.aljazeera.com/news/2026/11/28/israeli-strike-on-doctors-without-borders-clinic-in-gaza-kills-two-staff",
             urlToImage = "https://www.aljazeera.com/wp-content/uploads/2026/11/ap_6b04fd12611e1-1795489042.jpg?resize=1920%2C1440",
             publishedAt = Instant.parse("2026-11-24T06:02:04Z").toLocalDateTime(TimeZone.currentSystemDefault()),
             content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ex commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -75,7 +75,8 @@ fun HomeScreen(
         Column(Modifier.padding(innerPadding)) {
             SearchBar()
             NewsList(
-                newsList = listOf(newsItem, newsItem, newsItem, newsItem)
+                newsList = listOf(newsItem, newsItem, newsItem, newsItem),
+                onItemClick = onNewsClick
             )
         }
     }

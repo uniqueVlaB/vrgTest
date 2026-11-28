@@ -2,6 +2,8 @@ package com.example.vrgtest
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.Launch
+import androidx.compose.material.icons.filled.Launch
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -28,14 +30,15 @@ fun NewsApp(navController: NavHostController = rememberNavController()) {
     NewsNavHost(navController = navController)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsTopAppBar(
     title: String,
-    canNavigateBack: Boolean,
     modifier: Modifier = Modifier,
+    canNavigateBack: Boolean = false,
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    navigateUp: () -> Unit = {}
+    navigateUp: () -> Unit = {},
+    canLaunch: Boolean = false,
+    launch: () -> Unit = {}
 ) {
     CenterAlignedTopAppBar(
         title = { Text(title) },
@@ -48,6 +51,13 @@ fun NewsTopAppBar(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(R.string.back_button)
                     )
+                }
+            }
+        },
+        actions = {
+            if (canLaunch) {
+                IconButton(onClick = launch) {
+                    Icon(imageVector = Icons.AutoMirrored.Filled.Launch, contentDescription = null)
                 }
             }
         }
